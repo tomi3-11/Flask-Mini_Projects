@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.py~ # Backup files like app.py.un~
+*.py.un~
+
+# Virtual environments
+*/venv
+*/myenv
+*/env 
+/myenv
+
+# Flask
+instance/
+*.db
+*.sqlite3
+
+# VsCode
+.vscode/
+
+# Uploads Folders 
+uploads/
+*/uploads/
+
+# Environmental variables
+.env

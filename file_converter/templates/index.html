@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Converter</title>
+
+    <!-- Styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+        }
+        .messages {
+            color: red;
+            margin-bottom: 1rem;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PDF ↔ DOCX Converter</h1>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="messages">
+                    <ul>
+                        {% for msg in messages %}
+                            <li>{{ msg }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="post" enctype="multipart/form-data" id="upload-form">
+            <input type="file" name="file" accept=".pdf,.docx" required>
+            <button type="submit">Convert</button>
+        </form>
+
+        <p id="status"></p>
+    </div>
+
+    <!-- Javascript to perform file upload from local storage -->
+    <script>
+        const form = document.getElementById('upload-form');
+        const status = document.getElementById('status');
+
+        form.addEventListener('submit', () => {
+            status.textContent = 'Uploading and Converting... please wait.';
+        });
+    </script>
+</body>
+</html>
