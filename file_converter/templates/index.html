@@ -121,7 +121,7 @@
             align-items: center;
         }
 
-        p {
+        .title-1 {
             text-align: center;
             font-family: 'Lucida calligraphy';
             font-size: 3rem;
@@ -131,13 +131,14 @@
             border: none;
             border-radius: 25px;
             /* width: fit-content; */
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <p>Convertzy</p>
+        <p class="title-1">Convertzy</p>
         <h1>PDF <br> ↔ <br>DOCX</h1>
 
         {% with messages = get_flashed_messages() %}
