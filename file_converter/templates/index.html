@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,42 +10,155 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 2rem;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(1, 59, 249, 0.8), rgba(254, 5, 241, 0.9));
+            display: flex;
+            align-items: center;
+            color: white;
         }
+
+        h1 {
+            margin: 3rem;
+            text-align: center;
+            font-family: lucida calligraphy;
+        }
+
         .messages {
             color: red;
             margin-bottom: 1rem;
         }
+
         .container {
             max-width: 400px;
             margin: auto;
         }
+
         button {
             padding: 0.5rem 1rem;
             font-size: 1rem;
-            border-radius: 10px;
+            border-radius: 20px;
+            margin-top: 1rem;
+            align-items: center;
+            border: none;
+            font-family: lucida calligraphy;
+            cursor: pointer;
+        }
+
+        .input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            padding: 2rem;
+            border-radius: 25px;
+            position: relative;
+            width: fit-content;
+            height: 10px;
+            background: linear-gradient(0deg, #000, #272727);
+            align-items: center;
+            text-align: center;
+            margin: 1rem auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.8);
+            border: none;
+        }
+
+        .input input[type='file']::file-selector-button{
+            background-color: #4a148c;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 15px;
+            margin-right: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .input inpu[type='file']::file-selector-button:hover {
+            background-color: #6a1b9a;
+        }
+
+
+        input {
+            font-family: lucida calligraphy;
+        }
+
+        .input:before, .input:after {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094,
+            #0000ff, #00ff00, #ffff00, #ff0000);
+            background-size: 400%;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            z-index: -1;
+            animation: steam 20s linear infinite;
+            filter: blur(500px);
+        }
+
+        @keyframes steam {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 400% 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .input:after {
+            filter: blur(50px);
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        p {
+            text-align: center;
+            font-family: 'Lucida calligraphy';
+            font-size: 3rem;
+            border: 1px solid;
+            background: blue;
+            box-shadow: 3px 3px 20px rgba(0,0,0,0.8);
+            border: none;
+            border-radius: 25px;
+            /* width: fit-content; */
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h1>PDF ↔ DOCX Converter</h1>
+        <p>Convertzy</p>
+        <h1>PDF <br> ↔ <br>DOCX</h1>
 
         {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="messages">
-                    <ul>
-                        {% for msg in messages %}
-                            <li>{{ msg }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endif %}
+        {% if messages %}
+        <div class="messages">
+            <ul>
+                {% for msg in messages %}
+                <li>{{ msg }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
         {% endwith %}
 
         <form method="post" enctype="multipart/form-data" id="upload-form">
-            <input type="file" name="file" accept=".pdf,.docx" required>
-            <button type="submit">Convert</button>
+            <div class="input">
+                <input type="file" name="file" accept=".pdf,.docx" required> <br>
+            </div>
+            <div class="btn">
+                <button type="submit">Convert</button>
+            </div> 
         </form>
 
         <p id="status"></p>
@@ -60,4 +174,5 @@
         });
     </script>
 </body>
+
 </html>
