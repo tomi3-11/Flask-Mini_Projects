@@ -6,7 +6,7 @@ import uuid
 app = Flask(__name__)
 app.secret_key = 'secret'
 
-FFMPEG_PATH = "C:/ffmeg/bin"
+FFMPEG_PATH = "C:/ffmpeg/bin/ffmpeg.exe"
 DOWNLOAD_FOLDER = os.path.join(os.getcwd(), "downloads")
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 
