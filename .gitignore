@@ -9,6 +9,7 @@ __pycache__/
 */myenv
 */env 
 /myenv
+*/.venv
 
 # Flask
 instance/
