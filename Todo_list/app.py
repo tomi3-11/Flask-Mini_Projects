@@ -27,7 +27,7 @@ def home():
 @app.route('/view')
 def view_tasks():
     todos = Task.query.all()
-    return render_template('home.html', todos=todos)
+    return render_template('view_tasks.html', todos=todos)
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_task():
