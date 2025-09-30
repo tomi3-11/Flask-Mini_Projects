@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Task Flow</h1>
+<p>View all your tasks</p>
+
+
+<ul>
+    {% if todos %}
+    {% for todo in todos %}
+        <li>
+            {{ todo.title }}: {{ todo.description }} <a href="{{ url_for('delete_task')}}">Delete</a>
+        </li>
+    {% endfor %}
+    {% else %}
+        <li><p>No tasks added yet</p></li>
+    {% endif %}
+</ul>
+
+{% endblock %}

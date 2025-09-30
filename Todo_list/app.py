@@ -3,6 +3,9 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -47,13 +50,13 @@ def create_task():
         db.session.commit()
         
         flash('Task created successfully', 'success')
-        return redirect(url_for('view-tasks'))
-    return render_template('create_task.html', title=title, description=description)
+        return redirect(url_for('view_tasks'))
+    return render_template('create_task.html')
 
 
-@app.route('/edit/<int:task_id>', methods=['GET', 'POST'])
-def edit_task(task_id):
-    task = Task.query.get_or_404(task_id)
+@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit_task(id):
+    task = Task.query.get_or_404(id)
     
     if request.method == 'POST':
         task.title = request.form.get('title')
@@ -70,9 +73,9 @@ def edit_task(task_id):
     return render_template('edit_task.html', task=task)
 
 
-@app.route('/delete/<int:task_id>', methods=['GET', 'POST'])
-def delete_task(task_id):
-    task = Task.query.get_or_404(task_id)
+@app.route('/delete/<int:id>', methods=['GET', 'POST'])
+def delete_task(id):
+    task = Task.query.get_or_404(id)
     db.session.delete(task)
     db.session.commit()
     flash('Task deleted successfully!', 'success')
@@ -85,4 +88,4 @@ def delete_task(task_id):
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=True, host='0.0.0.0', port=8000)
+    app.run(debug=True)

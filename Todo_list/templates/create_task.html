@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Task Flow</h1>
+<p>Create a new task</p>
+
+<form method="post">
+    <label>Title: </label>
+    <input type="text" name="title">
+    <label>Description: </label>
+    <input type="text" name="description">
+    <button type="submit">Create</button>
+</form>
+
+{% endblock %}
