@@ -54,9 +54,9 @@ def create_task():
     return render_template('create_task.html')
 
 
-@app.route('/edit/<int:id>', methods=['GET', 'POST'])
-def edit_task(id):
-    task = Task.query.get_or_404(id)
+@app.route('/edit/<int:task_id>', methods=['GET', 'POST'])
+def edit_task(task_id):
+    task = Task.query.get_or_404(task_id)
     
     if request.method == 'POST':
         task.title = request.form.get('title')
@@ -73,9 +73,9 @@ def edit_task(id):
     return render_template('edit_task.html', task=task)
 
 
-@app.route('/delete/<int:id>', methods=['GET', 'POST'])
-def delete_task(id):
-    task = Task.query.get_or_404(id)
+@app.route('/delete/<int:task_id>', methods=['GET', 'POST'])
+def delete_task(task_id):
+    task = Task.query.get_or_404(task_id)
     db.session.delete(task)
     db.session.commit()
     flash('Task deleted successfully!', 'success')
