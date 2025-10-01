@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Task Flow</h1>
+<p>Edit a task</p>
+
+<form method="post">
+    <label>Title: </label>
+    <input type="text" name="title" value="{{ task.title }}"><br>
+    <label>Description: </label>
+    <input type="text" name="description" value="{{ task.description }}"> <br>
+    <button type="submit">Save changes</button>
+</form>
+
+{% endblock %}
