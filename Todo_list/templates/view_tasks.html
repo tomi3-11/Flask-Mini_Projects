@@ -8,13 +8,13 @@
 
 <ul>
     {% if todos %}
-    {% for todo in todos %}
-        <li>
-            {{ todo.title }}: {{ todo.description }} <a href="{{ url_for('delete_task', task_id=todo.id) }}">Delete</a>
-        </li>
-    {% endfor %}
+        {% for todo in todos %}
+            <li>
+                {{ todo.title }}: {{ todo.description }} <a href="{{ url_for('delete_task', task_id=todo.id) }}">Delete</a>
+            </li>
+        {% endfor %}
     {% else %}
-        <li><p>No tasks added yet</p></li>
+        <li>No tasks added yet</li>
     {% endif %}
 </ul>
 
