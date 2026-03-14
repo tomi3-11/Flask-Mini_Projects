@@ -1,9 +1,9 @@
-# Creating a simple hello world app
+# Creating a url pattern information
 
-here is jst creating a simple hello world app that returns a dictionary jst like any api would do.
+Here we are creating an api that you can pass parameters to the defined url then gives an ouput of the parameter in the returned `JSON`.
 
 ## Implementation
-here we jst implement the hello app
+here we jst implement the url pattern information api.
 
 The code below only imports the `Flask` framework class so as we can start using it
 ```python
