@@ -70,3 +70,12 @@ def clear_session():
     return jsonify({
         "message": "Session cleared successfully."
     }, 200)
+
+
+@app.route("/api/counter/info/", methods=["GET"])
+def get_session_info():
+    return jsonify({
+        "message": "Counter retrived successfully.",
+        "session": session["counter"],
+        "session_id": session.sid if hasattr(session, 'sid') else 'unknown',
+    }, 200)
