@@ -27,3 +27,14 @@ def get_counter():
         "session_id": session.sid if hasattr(session, 'sid') else 'unknown',
         "message": "Counter retrived successfully"
     }, 200)
+
+
+@app.route("/api/counter/increment", methods=["GET"])
+def increment_counter():
+    if 'counter' in session:
+        session['counter'] += 1
+        
+    return jsonify({
+        "counter": session['counter'],
+        "message": "Counter incremented successfully"
+    }, 200)
