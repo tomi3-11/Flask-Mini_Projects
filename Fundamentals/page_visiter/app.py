@@ -38,3 +38,15 @@ def increment_counter():
         "counter": session['counter'],
         "message": "Counter incremented successfully"
     }, 200)
+
+
+@app.route("/api/counter/decrement", methods=["GET"])
+def decrement_counter():
+    if 'counter' in session and session['counter'] > 0:
+        session['counter'] -= 1
+        
+    return jsonify({
+        "counter": session['counter'],
+        "message": "Counter decremented successfully"
+    }, 200)
+
