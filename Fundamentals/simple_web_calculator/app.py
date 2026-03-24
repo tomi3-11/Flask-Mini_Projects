@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 
 # Routes
-@app.route("/calculate", methods=["POST"])
+@app.route("/calculate", methods=["POST", "GET"])
 def calculate():
     result = ""
 
