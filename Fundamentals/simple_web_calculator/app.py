@@ -1,0 +1,34 @@
+from flask import Flask, request, render_template
+
+
+# instance of the flask class
+app = Flask(__name__)
+
+
+# Routes
+@app.route("/calculate", methods=["POST"])
+def calculate():
+    result = ""
+
+    if request.method == "POST":
+        num1 = request.form.get("num1", "")
+        num2 = request.form.get("num2", "")
+        operation = request.form.get("operation", "")
+
+        if operation == "+":
+            result = num1 + num2
+            return result
+        elif operation == "-":
+            result = num1 - num2
+            return result
+        if operation == "*":
+            result = num1 * num2
+            return result
+        elif operation == "/":
+            if num2 == 0:
+                result = f"ZeroDivisionError: {num2} cannot be divided by 0"
+                return result
+            result = num1 / num2
+            return result
+
+    return render_template("index.html", result=result)
