@@ -10,21 +10,24 @@
         <lable for="num1">Num1</label>
         <input name="num1"><br>
         <lable for="num2">Num2</label>
-        <input name="num2">
+        <input name="num2"> <br>
 
-        <select>
+        <select name="operation">
             <option value="addition">Add</option>
             <option value="subtraction">subtraction</option>
             <option value="multiplication">multiplication</option>
             <option value="division">division</option>
         </select>
 
-        <div>
-            {% if result %}
-                <div>{{ result }}</div>
-            {% endif %}
-        <div>
+        <br>
+        <button type="submit">Calculate</button>
     </form>
+    
+    <div>
+        {% if result %}
+            <h2>{{ result }}</h2>
+        {% endif %}
+    <div>
 </body>
 
 </html>
