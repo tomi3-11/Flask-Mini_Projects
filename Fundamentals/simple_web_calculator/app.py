@@ -15,16 +15,16 @@ def calculate():
         num2 = request.form.get("num2", "")
         operation = request.form.get("operation", "")
 
-        if operation == "+":
+        if operation == "addition"
             result = num1 + num2
             return result
-        elif operation == "-":
+        elif operation == "subraction":
             result = num1 - num2
             return result
-        if operation == "*":
+        if operation == "multiplication":
             result = num1 * num2
             return result
-        elif operation == "/":
+        elif operation == "division":
             if num2 == 0:
                 result = f"ZeroDivisionError: {num2} cannot be divided by 0"
                 return result
